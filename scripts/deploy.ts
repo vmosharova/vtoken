@@ -1,4 +1,6 @@
 import { ethers } from "hardhat";
+import * as fs from "fs";
+import * as path from "path";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
@@ -15,7 +17,27 @@ async function main() {
 
   await token.waitForDeployment();
 
-  console.log(`Token deployed at address: ${token.target}`);
+  const tokenAddress = token.target;
+
+  console.log(`Token deployed at address: ${tokenAddress}`);
+  const envFilePath = path.resolve(__dirname, "../.env");
+
+  let envContent = "";
+  if (fs.existsSync(envFilePath)) {
+    envContent = fs.readFileSync(envFilePath, "utf-8");
+
+    if (envContent.includes("TOKEN_ADDRESS=")) {
+      envContent = envContent.replace(/TOKEN_ADDRESS=.*/g, `TOKEN_ADDRESS=${tokenAddress}`);
+    } else {
+      envContent += `\nTOKEN_ADDRESS=${tokenAddress}\n`;
+    }
+    
+  } else {
+    envContent = `TOKEN_ADDRESS=${tokenAddress}\n`;
+  }
+
+  fs.writeFileSync(envFilePath, envContent);
+  console.log("TOKEN_ADDRESS saved to .env");
 }
 
 main().catch((error) => {

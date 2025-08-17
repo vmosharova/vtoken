@@ -1,13 +1,54 @@
-# Sample Hardhat Project
+# A custom ERC-20 token VToken (VARY)
+                                                        
+This project is a simple ERC20 token implementation built with Hardhat and TypeScript.
+This project is a work in progress and will expand with time.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+## Overview
 
-Try running some of the following tasks:
+VToken (VARY) is a basic ERC20 token contract deployed on a local Hardhat network. The token has an
+initial supply of 1000 tokens minted to the deployer's address.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
-```
+## Tech Stack
+
+- Solidity ^0.8.30
+- Hardhat
+- OpenZeppelin Contracts
+
+## Features
+
+- ERC20-compliant token contract (`VToken.sol`)
+- Custom name (VToken) and symbol (VARY)
+- Deployment script with automatic address persistence (`scripts/deploy.ts`)
+- Balance checking (`scripts/checkBalance.ts`)
+- Token transfer (`scripts/transfer.ts`)
+
+## Usage
+
+### 0. Prerequisites:
+
+- Node.js (^20 recommended)
+- `pnpm` package manager (^10)
+
+### 1. Install dependencies:
+
+`pnpm install`
+
+### 2. Compile contracts:
+
+`pnpm run compile` compiles the Solidity smart contracts using Hardhat.
+
+### 3. Start local Hardhat network:
+
+`pnpm run node` starts a local Hardhat blockchain node for development and testing
+
+### 4. Deploy token:
+
+`pnpm run deploy:local` deploys the VToken contract to the local network with 1,000 initial tokens and automatically saves the generated contract address to the `.env` file.
+
+### 5. Check Balance:
+
+`pnpm checkBalance:local` displays the current VToken balance of the deployer account.
+
+### 6. Transfer:
+
+`pnpm transfer:local` transfers 100 VTokens from the deployer account to a receiver account (the second account from the hadrhat-generated list) and displays the before/after balances for both accounts.

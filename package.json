@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "hardhat compile",
     "node": "pnpm hardhat node",
-    "deploy": "hardhat run scripts/deploy.ts --network localhost"
+    "deploy:local": "npx hardhat run scripts/deploy.ts --network localhost",
+    "checkBalance:local": "npx hardhat run scripts/checkBalance.ts --network localhost",
+    "transfer:local": "npx hardhat run scripts/transfer.ts --network localhost"
   },
   "keywords": [],
   "author": "",

@@ -45,10 +45,15 @@ initial supply of 1000 tokens minted to the deployer's address.
 
 `pnpm run deploy:local` deploys the VToken contract to the local network with 1,000 initial tokens and automatically saves the generated contract address to the `.env` file.
 
-### 5. Check Balance:
+## Contract interactions
+### Check Balance:
 
 `pnpm checkBalance:local` displays the current VToken balance of the deployer account.
 
-### 6. Transfer:
+### Transfer:
 
 `pnpm transfer:local` transfers 100 VTokens from the deployer account to a receiver account (the second account from the hadrhat-generated list) and displays the before/after balances for both accounts.
+
+### Add allowance and make transfer:
+
+`approveAllowanceAndTransfer:local` lets the owner approve a spender to transfer tokens on their behalf. It sets an allowance amount, executes the transfer and logs the allowance before and after.

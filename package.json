@@ -10,7 +10,7 @@
     "deploy:local": "npx hardhat run scripts/deploy.ts --network localhost",
     "checkBalance:local": "npx hardhat run scripts/checkBalance.ts --network localhost",
     "transfer:local": "npx hardhat run scripts/transfer.ts --network localhost",
-    "approveAllowanceAndTransfer": "npx hardhat run scripts/approveAndTransfer.ts --network localhost"
+    "approveAllowanceAndTransfer:local": "npx hardhat run scripts/approveAndTransfer.ts --network localhost"
   },
   "keywords": [],
   "author": "",
